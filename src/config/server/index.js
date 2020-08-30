@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import routes from '../routes';
+import sequelize from '../sequelize';
 
 const BASE_API_URL = '/api/v1';
 const WELCOME_API_URL = `${BASE_API_URL}/base`;
@@ -18,4 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Default is root path
 app.use(WELCOME_API_URL, routes.BaseController);
 
-export default app;
+export default {
+  app,
+  sequelize,
+};
