@@ -17,6 +17,7 @@ var _sequelize = _interopRequireDefault(require("../sequelize"));
 
 var BASE_API_URL = '/api/v1';
 var WELCOME_API_URL = "".concat(BASE_API_URL, "/base");
+var STUDENTS_API_URL = "".concat(BASE_API_URL, "/students");
 var app = (0, _express["default"])(); // cors to allow cross origin requests
 
 app.use((0, _cors["default"])()); // Allows to parse JSON payloads in body with correct content type
@@ -30,6 +31,7 @@ app.use(_express["default"].urlencoded({
 // Default is root path
 
 app.use(WELCOME_API_URL, _routes["default"].BaseController);
+app.use(STUDENTS_API_URL, _routes["default"].StudentsController);
 var _default = {
   app: app,
   sequelize: _sequelize["default"]
