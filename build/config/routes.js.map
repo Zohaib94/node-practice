@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/config/routes.js"],"names":["BaseController"],"mappings":";;;;;;;;;AAAA;;eAEe;AACbA,EAAAA,cAAc,EAAdA;AADa,C","sourcesContent":["import BaseController from '../controllers/api/v1/BaseController';\n\nexport default {\n  BaseController,\n};\n"],"file":"routes.js"}
