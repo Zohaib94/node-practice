@@ -53,4 +53,4 @@ Student.init({
 });
 var _default = Student;
 exports["default"] = _default;
-//# sourceMappingURL=student.js.map
+//# sourceMappingURL=Student.js.map
