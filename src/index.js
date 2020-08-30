@@ -1,10 +1,12 @@
 import server from './config/server/index';
+import sequelize from './config/sequelize';
 
 const port = 3002;
 
 server.sequelize
   .authenticate()
-  .then(() => {
+  .then(async () => {
+    await sequelize.sync();
     console.log('Connected to Database Successfully');
 
     // binds and listens for connections on specified port
