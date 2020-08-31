@@ -1,6 +1,6 @@
 import server from './config/server/index';
 
-const port = 3002;
+const port = process.env.PORT || 3002;
 
 server.sequelize
   .authenticate()
