@@ -25,4 +25,14 @@ StudentsController.post('/', async (request, response) => {
   }
 });
 
+StudentsController.post('/:id/isic', async (request, response) => {
+  try {
+    const isicCard = await StudentService.createISICCard(request.params.id, request.body);
+    response.json(new SuccessResponse(isicCard));
+  } catch (err) {
+    console.log(err);
+    response.status(err.code).json(err.getResource());
+  }
+});
+
 export default StudentsController;
