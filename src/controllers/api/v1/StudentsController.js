@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import StudentService from '../../../services/StudentService';
 import SuccessResponse from '../../../responses/SuccessResponse';
+import ISICCardsController from './ISICCardsController';
 
 // Router is isolated instance of middleware and routes capable of only routing and middleware functions
 const StudentsController = Router();
@@ -25,14 +26,6 @@ StudentsController.post('/', async (request, response) => {
   }
 });
 
-StudentsController.post('/:id/isic', async (request, response) => {
-  try {
-    const isicCard = await StudentService.createISICCard(request.params.id, request.body);
-    response.json(new SuccessResponse(isicCard));
-  } catch (err) {
-    console.log(err);
-    response.status(err.code).json(err.getResource());
-  }
-});
+StudentsController.use('/:studentId/isic_cards', ISICCardsController);
 
 export default StudentsController;
