@@ -19,6 +19,8 @@ var _SuccessResponse = _interopRequireDefault(require("../../../responses/Succes
 
 var _ISICCardsController = _interopRequireDefault(require("./ISICCardsController"));
 
+var _PaymentsController = _interopRequireDefault(require("./PaymentsController"));
+
 // Router is isolated instance of middleware and routes capable of only routing and middleware functions
 var StudentsController = (0, _express.Router)();
 StudentsController.get('/', /*#__PURE__*/function () {
@@ -92,6 +94,7 @@ StudentsController.post('/', /*#__PURE__*/function () {
   };
 }());
 StudentsController.use('/:studentId/isic_cards', _ISICCardsController["default"]);
+StudentsController.use('/:studentId/payments', _PaymentsController["default"]);
 var _default = StudentsController;
 exports["default"] = _default;
 //# sourceMappingURL=StudentsController.js.map

@@ -21,6 +21,8 @@ var _StudentSerializer = _interopRequireDefault(require("../serializers/StudentS
 
 var _ISICCardSerializer = _interopRequireDefault(require("../serializers/ISICCardSerializer"));
 
+var _TransactionSerializer = _interopRequireDefault(require("../serializers/TransactionSerializer"));
+
 var _ErrorResponse = _interopRequireDefault(require("../responses/ErrorResponse"));
 
 var StudentService = /*#__PURE__*/function () {
@@ -126,32 +128,42 @@ var StudentService = /*#__PURE__*/function () {
                 throw new Error('Student Not Found');
 
               case 6:
-                if (!student.getISICCard()) {
-                  _context3.next = 8;
+                _context3.next = 8;
+                return student.getISICCard();
+
+              case 8:
+                isicCard = _context3.sent;
+
+                if (!isicCard) {
+                  _context3.next = 13;
                   break;
                 }
 
                 throw new Error('Student already has an ISIC Card');
 
-              case 8:
-                _context3.next = 10;
+              case 13:
+                _context3.next = 15;
                 return student.createISICCard(params);
 
-              case 10:
+              case 15:
                 isicCard = _context3.sent;
                 return _context3.abrupt("return", _ISICCardSerializer["default"].toResource(isicCard));
 
-              case 14:
-                _context3.prev = 14;
+              case 17:
+                _context3.next = 22;
+                break;
+
+              case 19:
+                _context3.prev = 19;
                 _context3.t0 = _context3["catch"](0);
                 throw new _ErrorResponse["default"](_context3.t0.message, 422);
 
-              case 17:
+              case 22:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 14]]);
+        }, _callee3, null, [[0, 19]]);
       }));
 
       function createISICCard(_x2, _x3) {
@@ -159,6 +171,74 @@ var StudentService = /*#__PURE__*/function () {
       }
 
       return createISICCard;
+    }()
+  }, {
+    key: "generatePayment",
+    value: function () {
+      var _generatePayment = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(studentID, params) {
+        var student, isicCard, payment;
+        return _regenerator["default"].wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _Student["default"].findByPk(studentID);
+
+              case 3:
+                student = _context4.sent;
+
+                if (student) {
+                  _context4.next = 6;
+                  break;
+                }
+
+                throw new Error('Student Not Found');
+
+              case 6:
+                _context4.next = 8;
+                return student.getISICCard();
+
+              case 8:
+                isicCard = _context4.sent;
+
+                if (isicCard) {
+                  _context4.next = 13;
+                  break;
+                }
+
+                throw new Error('Student does not have an ISIC Card');
+
+              case 13:
+                _context4.next = 15;
+                return isicCard.createTransaction(params);
+
+              case 15:
+                payment = _context4.sent;
+                return _context4.abrupt("return", _TransactionSerializer["default"].toResource(payment));
+
+              case 17:
+                _context4.next = 22;
+                break;
+
+              case 19:
+                _context4.prev = 19;
+                _context4.t0 = _context4["catch"](0);
+                throw new _ErrorResponse["default"](_context4.t0.message, 422);
+
+              case 22:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 19]]);
+      }));
+
+      function generatePayment(_x4, _x5) {
+        return _generatePayment.apply(this, arguments);
+      }
+
+      return generatePayment;
     }()
   }]);
   return StudentService;
