@@ -89,6 +89,41 @@ StudentsController.post('/', /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }());
+StudentsController.post('/:id/isic', /*#__PURE__*/function () {
+  var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(request, response) {
+    var isicCard;
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return _StudentService["default"].createISICCard(request.params.id, request.body);
+
+          case 3:
+            isicCard = _context3.sent;
+            response.json(new _SuccessResponse["default"](isicCard));
+            _context3.next = 11;
+            break;
+
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            console.log(_context3.t0);
+            response.status(_context3.t0.code).json(_context3.t0.getResource());
+
+          case 11:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 7]]);
+  }));
+
+  return function (_x5, _x6) {
+    return _ref3.apply(this, arguments);
+  };
+}());
 var _default = StudentsController;
 exports["default"] = _default;
 //# sourceMappingURL=StudentsController.js.map

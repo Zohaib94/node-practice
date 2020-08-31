@@ -19,6 +19,8 @@ var _Student = _interopRequireDefault(require("../models/Student"));
 
 var _StudentSerializer = _interopRequireDefault(require("../serializers/StudentSerializer"));
 
+var _ISICCardSerializer = _interopRequireDefault(require("../serializers/ISICCardSerializer"));
+
 var _ErrorResponse = _interopRequireDefault(require("../responses/ErrorResponse"));
 
 var StudentService = /*#__PURE__*/function () {
@@ -99,6 +101,64 @@ var StudentService = /*#__PURE__*/function () {
       }
 
       return createStudent;
+    }()
+  }, {
+    key: "createISICCard",
+    value: function () {
+      var _createISICCard = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(studentID, params) {
+        var student, isicCard;
+        return _regenerator["default"].wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _Student["default"].findByPk(studentID);
+
+              case 3:
+                student = _context3.sent;
+
+                if (student) {
+                  _context3.next = 6;
+                  break;
+                }
+
+                throw new Error('Student Not Found');
+
+              case 6:
+                if (!student.getISICCard()) {
+                  _context3.next = 8;
+                  break;
+                }
+
+                throw new Error('Student already has an ISIC Card');
+
+              case 8:
+                _context3.next = 10;
+                return student.createISICCard(params);
+
+              case 10:
+                isicCard = _context3.sent;
+                return _context3.abrupt("return", _ISICCardSerializer["default"].toResource(isicCard));
+
+              case 14:
+                _context3.prev = 14;
+                _context3.t0 = _context3["catch"](0);
+                throw new _ErrorResponse["default"](_context3.t0.message, 422);
+
+              case 17:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 14]]);
+      }));
+
+      function createISICCard(_x2, _x3) {
+        return _createISICCard.apply(this, arguments);
+      }
+
+      return createISICCard;
     }()
   }]);
   return StudentService;

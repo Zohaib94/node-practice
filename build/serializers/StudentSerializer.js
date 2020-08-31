@@ -21,7 +21,7 @@ var StudentSerializer = /*#__PURE__*/function () {
   (0, _createClass2["default"])(StudentSerializer, null, [{
     key: "toResource",
     value: function toResource(studentObject) {
-      var studentResource = new _StudentResponse["default"](studentObject.firstName, studentObject.lastName, studentObject.id);
+      var studentResource = new _StudentResponse["default"](studentObject.id, studentObject.firstName, studentObject.lastName);
       return studentResource;
     }
   }]);
