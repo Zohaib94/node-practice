@@ -2,6 +2,7 @@ import { Router } from 'express';
 import StudentService from '../../../services/StudentService';
 import SuccessResponse from '../../../responses/SuccessResponse';
 import ISICCardsController from './ISICCardsController';
+import TransactionsController from './TransactionsController';
 
 // Router is isolated instance of middleware and routes capable of only routing and middleware functions
 const StudentsController = Router();
@@ -27,5 +28,6 @@ StudentsController.post('/', async (request, response) => {
 });
 
 StudentsController.use('/:studentId/isic_cards', ISICCardsController);
+StudentsController.use('/:studentId/payments', TransactionsController);
 
 export default StudentsController;
