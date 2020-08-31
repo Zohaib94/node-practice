@@ -1,4 +1,9 @@
 import Sequelize from 'sequelize';
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 const DB_PATH = process.env.NODE_ENV === 'test' ? process.env.DB_PATH_TEST : process.env.DB_PATH;
 

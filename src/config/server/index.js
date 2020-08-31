@@ -5,6 +5,7 @@ import sequelize from '../sequelize';
 
 const BASE_API_URL = '/api/v1';
 const WELCOME_API_URL = `${BASE_API_URL}/base`;
+const STUDENTS_API_URL = `${BASE_API_URL}/students`;
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Order is necessary
 // Default is root path
 app.use(WELCOME_API_URL, routes.BaseController);
+app.use(STUDENTS_API_URL, routes.StudentsController);
 
 export default {
   app,

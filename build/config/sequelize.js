@@ -9,6 +9,12 @@ exports["default"] = void 0;
 
 var _sequelize = _interopRequireDefault(require("sequelize"));
 
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+if (process.env.NODE_ENV !== 'production') {
+  _dotenv["default"].config();
+}
+
 var DB_PATH = process.env.NODE_ENV === 'test' ? process.env.DB_PATH_TEST : process.env.DB_PATH;
 var sequelize = new _sequelize["default"]({
   dialect: process.env.DB_DIALECT,

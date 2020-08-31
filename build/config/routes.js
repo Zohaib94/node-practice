@@ -7,16 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _dotenv = _interopRequireDefault(require("dotenv"));
-
 var _BaseController = _interopRequireDefault(require("../controllers/api/v1/BaseController"));
 
-if (process.env.NODE_ENV !== 'production') {
-  _dotenv["default"].config();
-}
+var _StudentsController = _interopRequireDefault(require("../controllers/api/v1/StudentsController"));
 
 var _default = {
-  BaseController: _BaseController["default"]
+  BaseController: _BaseController["default"],
+  StudentsController: _StudentsController["default"]
 };
 exports["default"] = _default;
 //# sourceMappingURL=routes.js.map
