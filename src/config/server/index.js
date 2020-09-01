@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import routes from '../routes';
-import sequelize from '../sequelize';
+import sequelize from '../db/sequelize';
 
 const BASE_API_URL = '/api/v1';
 const WELCOME_API_URL = `${BASE_API_URL}/base`;
